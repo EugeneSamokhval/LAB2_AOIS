@@ -1,3 +1,6 @@
+import copy
+
+
 def binary_to_int(binary: str):
     output_decimal = 0
     counter = len(binary)-1
@@ -18,9 +21,9 @@ def inner_logic_sknf(variant: int, sknf_output: str):
 
 def inner_logic_sdnf(variant: int, sdnf_output: list):
     if variant == 0:
-        sdnf_output+="0"
-    else:
         sdnf_output+="1"
+    else:
+        sdnf_output+="0"
     return sdnf_output
 
 
@@ -86,4 +89,10 @@ def separator_of_logic_solutions(logic_object: list, table_of_variables: list):
     sdnf_decimal_list = sdnf_processor(sdnf_string)
     sknf_decimal_list = sknf_processor(sknf_string)
     index = binary_to_int(binary_form)
-    print("СДНФ:", sdnf_string, sdnf_decimal_list, "\nСКНФ:", sknf_string, sknf_decimal_list, "\nИндекс:", index)
+    output_table = copy.deepcopy(table_of_variables)
+    row = 0
+    for sign in logic_object:
+        output_table[row].append(sign)
+        row+=1
+    print("СДНФ:", sdnf_string, sdnf_decimal_list, "\nСКНФ:", sknf_string, sknf_decimal_list, "\nИндекс:",
+          index, "\nТаблица:\n", output_table)
