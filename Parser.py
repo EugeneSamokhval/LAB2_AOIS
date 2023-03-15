@@ -11,6 +11,7 @@ def starting_table_constructor(prebuilt_formula: str):
     for sign in prebuilt_formula:
         if sign.islower() or sign.isupper():
             list_of_variables.append(sign)
+    list_of_variables = list(dict.fromkeys(list_of_variables))
     table_of_truth = [bin(counter) for counter in range(2 ** len(list_of_variables))]
     table_of_truth = [number.removeprefix('0b') for number in table_of_truth]
     table_of_truth = [[sign for sign in number] for number in table_of_truth]
