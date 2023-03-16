@@ -13,17 +13,17 @@ def binary_to_int(binary: str):
 
 def inner_logic_sknf(variant: int, sknf_output: str):
     if variant == 1:
-        sknf_output+="0"
-    else:
         sknf_output+="1"
+    else:
+        sknf_output+="0"
     return sknf_output
 
 
 def inner_logic_sdnf(variant: int, sdnf_output: list):
     if variant == 0:
-        sdnf_output+="1"
-    else:
         sdnf_output+="0"
+    else:
+        sdnf_output+="1"
     return sdnf_output
 
 
@@ -95,4 +95,6 @@ def separator_of_logic_solutions(logic_object: list, table_of_variables: list):
         output_table[row].append(sign)
         row+=1
     print("СДНФ:", sdnf_string, sdnf_decimal_list, "\nСКНФ:", sknf_string, sknf_decimal_list, "\nИндекс:",
-          index, "\nТаблица:\n", output_table)
+          index, "\nТаблица:")
+    for row in output_table:
+        print(row)
